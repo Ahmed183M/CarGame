@@ -103,7 +103,7 @@ const carMover = (e) => {
                 }
             }
         }
-        if (carFuel.fuel() <= 30) {
+        if (carFuel.fuel() <= 35) {
             tankValue.style.color = "red";
         }
         if (carFuel.fuel() <= 0) {

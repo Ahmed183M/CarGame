@@ -31,7 +31,6 @@ let secondCounter = 0;
 const carMover = (e) => {
     if (onInput == false) {
         if (e.key == "d") {
-
             // Normal gameplay without cheats
             if (restrictionCheatActive == false) {
                 if (gear.value == 1) {
@@ -158,24 +157,37 @@ function collidesWith(element1, element2) {
         Element1.bottom > Element2.top
     ) {
         // Do your stuff here
-        if (secondCounter >= 5 && carFuel.fuel() < 35) {
+        if (secondCounter >= 5 && carFuel.fuel() < 32) {
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
                 "Movements: " +
                 moveCounter +
                 "\nScore: " +
                 carFuel.fuel() +
-                '\nCheat Code 1: "WinnersGetExtraAdvantages:P"\nClick OK to restart!'
+                '\nCheat Code 1: "WinnersGetAdvantages:D"\nClick OK to restart!'
             );
             location.reload();
-        } else if (carFuel.fuel() >= 35) {
+        } else if (carFuel.fuel() >= 32 && carFuel.fuel() < 42) {
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
                 "Movements: " +
                 moveCounter +
                 "\nScore: " +
                 carFuel.fuel() +
-                '\nCheat Code 1: "WinnersGetExtraAdvantages:P"' + '\nCheat Code 2: "BetterWinnersGetEvenBetterAdvantages:D"\nClick OK to restart!'
+                '\nCheat Code 1: "WinnersGetAdvantages:D"' +
+                '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"\nClick OK to restart!'
+            );
+            location.reload();
+        } else if (carFuel.fuel() >= 42) {
+            alert("Congratulations!🎉 \n Click OK to see your stats...");
+            alert(
+                "Movements: " +
+                moveCounter +
+                "\nScore: " +
+                carFuel.fuel() +
+                '\nCheat Code 1: "WinnersGetAdvantages:D"' +
+                '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"' +
+                '\nCheat Code 3: "UltraWinnersGetUltraAdvantages:D:D:D"\nClick OK to restart!'
             );
             location.reload();
         } else {
@@ -190,15 +202,22 @@ function collidesWith(element1, element2) {
 // Cheat Activations
 let restrictionCheatActive = false;
 let boosterCheatActive = false;
+let dragCheatActive = false;
 const cheater = () => {
-    if (cheatInput.value == "WinnersGetExtraAdvantages:P") {
+    if (cheatInput.value == "WinnersGetAdvantages:D") {
         restrictionCheatActive = true;
-        alert("Cheat Activated\nAll Restrictions Removed!");
+        alert("Cheat Activated:\nAll Restrictions Removed!");
         cheatInput.value = "";
-    } else if (cheatInput.value == "BetterWinnersGetEvenBetterAdvantages:D") {
+    } else if (cheatInput.value == "BetterWinnersGetBetterAdvantages:D:D") {
         restrictionCheatActive = true;
         boosterCheatActive = true;
-        alert("Cheat Activated\nEnjoy your boosted car with no restrictions!");
+        alert("2 Cheats Activated:\nEnjoy your boosted car with no restrictions!");
+        cheatInput.value = "";
+    } else if (cheatInput.value == "UltraWinnersGetUltraAdvantages:D:D:D") {
+        restrictionCheatActive = true;
+        boosterCheatActive = true;
+        dragCheatActive = true;
+        alert("3 Cheats Activated:\nBoosted Car & No Restrictions\nLet's make this a DRAG race 😉!");
         cheatInput.value = "";
     } else {
         alert("Invalid Cheat Code");
@@ -206,3 +225,40 @@ const cheater = () => {
     }
 };
 cheatButton.addEventListener("click", cheater);
+
+// In case cheat 3 is activated
+car.addEventListener("mousedown", function (event) {
+    if (dragCheatActive == true) {
+
+        let shiftX = event.clientX - car.getBoundingClientRect().left;
+
+
+        // moves the car at (pageX, pageY) coordinates
+        // taking initial shifts into account
+        function moveAt(pageX) {
+            car.style.left = pageX - shiftX + 'px';
+        }
+
+        function onMouseMove(event) {
+            moveAt(event.pageX);
+        }
+
+        // move the car on mousemove
+        document.addEventListener('mousemove', onMouseMove);
+
+        // drop the car, remove unneeded handlers
+        car.onmouseup = function () {
+            carFuel.consume(1);
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter += 1;
+
+            collidesWith(car, line);
+            document.removeEventListener('mousemove', onMouseMove);
+            car.onmouseup = null;
+        };
+    }
+});
+
+car.ondragstart = function () {
+    return false;
+};

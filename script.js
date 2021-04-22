@@ -16,10 +16,14 @@ const fuelConsumer = () => {
     const currentFuel = () => {
         return fuelTank;
     };
+    const fuelReset = () => {
+        fuelTank = 50;
+    }
 
     return {
         consume: consume,
         fuel: currentFuel,
+        reset: fuelReset,
     };
 };
 const carFuel = fuelConsumer();
@@ -102,7 +106,7 @@ const carMover = (e) => {
                 }
             }
         }
-        if (carFuel.fuel() <= 35) {
+        if (carFuel.fuel() <= 30) {
             tankValue.style.color = "red";
         }
         if (carFuel.fuel() <= 0) {
@@ -111,7 +115,11 @@ const carMover = (e) => {
                 moveCounter +
                 " Movements\nClick OK to restart!"
             );
-            location.reload();
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
         }
         collidesWith(car, line);
     }
@@ -166,7 +174,11 @@ function collidesWith(element1, element2) {
                 carFuel.fuel() +
                 '\nCheat Code 1: "WinnersGetAdvantages:D"\nClick OK to restart!'
             );
-            location.reload();
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
         } else if (carFuel.fuel() >= 32 && carFuel.fuel() < 42) {
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
@@ -177,7 +189,11 @@ function collidesWith(element1, element2) {
                 '\nCheat Code 1: "WinnersGetAdvantages:D"' +
                 '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"\nClick OK to restart!'
             );
-            location.reload();
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
         } else if (carFuel.fuel() >= 42) {
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
@@ -189,12 +205,20 @@ function collidesWith(element1, element2) {
                 '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"' +
                 '\nCheat Code 3: "UltraWinnersGetUltraAdvantages:D:D:D"\nClick OK to restart!'
             );
-            location.reload();
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
         } else {
             alert(
                 "You FAIL!\n⚠ You didn't pass the second restriction!\nClick OK to restart..."
             );
-            location.reload();
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
         }
     }
 }

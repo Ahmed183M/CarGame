@@ -166,13 +166,17 @@ function collidesWith(element1, element2) {
     ) {
         // Do your stuff here
         if (secondCounter >= 5 && carFuel.fuel() < 32) {
+            let showCheat = "";
+            if (carFuel.fuel() >= 24) {
+                showCheat = '\nCheat Code 1: "WinnersGetAdvantages:D"';
+            }
+
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
                 "Movements: " +
                 moveCounter +
                 "\nScore: " +
-                carFuel.fuel() +
-                '\nCheat Code 1: "WinnersGetAdvantages:D"\nClick OK to restart!'
+                carFuel.fuel() + showCheat + "\nClick OK to restart!"
             );
             carFuel.reset();
             tankValue.style.color = "black";
@@ -194,7 +198,7 @@ function collidesWith(element1, element2) {
             tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
             moveCounter = firstCounter = secondCounter = 0;
             car.style.left = "0px";
-        } else if (carFuel.fuel() >= 42) {
+        } else if (carFuel.fuel() >= 42 && carFuel.fuel() < 49) {
             alert("Congratulations!🎉 \n Click OK to see your stats...");
             alert(
                 "Movements: " +
@@ -204,6 +208,22 @@ function collidesWith(element1, element2) {
                 '\nCheat Code 1: "WinnersGetAdvantages:D"' +
                 '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"' +
                 '\nCheat Code 3: "UltraWinnersGetUltraAdvantages:D:D:D"\nClick OK to restart!'
+            );
+            carFuel.reset();
+            tankValue.style.color = "black";
+            tankValue.innerHTML = "Fuel Tank: " + carFuel.fuel() + " Liters";
+            moveCounter = firstCounter = secondCounter = 0;
+            car.style.left = "0px";
+        } else if (carFuel.fuel() == 49) {
+            alert("Congratulations!🎉 \n Click OK to see your stats...");
+            alert(
+                "Movements: " +
+                moveCounter +
+                "\nScore: " +
+                carFuel.fuel() +
+                '\nCheat Code 1: "WinnersGetAdvantages:D"' +
+                '\nCheat Code 2: "BetterWinnersGetBetterAdvantages:D:D"' +
+                '\nCheat Code 3: "UltraWinnersGetUltraAdvantages:D:D:D"\nYou Have MASTERED the game!\nClick OK to restart!'
             );
             carFuel.reset();
             tankValue.style.color = "black";

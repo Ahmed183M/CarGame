@@ -1,71 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>The Car Game 2.0!</h1>
-    <h2>Instructions:</h2>
 
-    <ol>
-      <li>You have three gears to choose from.</li>
-      <li>
-        The first gear (Gear 1) will make the car move 10 pixels per button
-        press. And the car will consume 1 liter of fuel per movement.
-      </li>
-      <li>
-        The second gear (Gear 2) will make the car move 20 pixels per button
-        press. And the car will consume 0.75 liter of fuel per movement.
-      </li>
-      <li>
-        The third gear (Gear 3) will make the car move 30 pixels per button
-        press. And the car will consume 0.25 liter of fuel per movement.
-      </li>
-      <li>
-        After you choose a gear use the "D" keyboard button to move the car
-        towards the finish point.
-      </li>
-      <li>Reach the finish line without running out of fuel!</li>
-      <li>Refresh the browser to start a new fresh game.</li>
-    </ol>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <h2>Some Restrictions:</h2>
-    <ol>
-      <li>You MUST start with the first gear and use it for 5 movements!</li>
-      <li>
-        You can only win if you have used the second gear for 5 movements!
-      </li>
-    </ol>
-    <ul>
-      <li>
-        You can bypass these restrictions if you know the first cheat code!
-      </li>
-      <li>
-        <input type="text" id="cheatcode" placeholder="Enter Cheat Code" />
-        <button id="cheatButton">Enter</button>
-      </li>
-    </ul>
+<body>
+  <h1>The Car Game 2.0!</h1>
+  <h2>Instructions:</h2>
 
-    <h3>Select a gear:</h3>
-    <select name="gears" id="gearSelect">
-      <option value="1">Gear 1</option>
-      <option value="2">Gear 2</option>
-      <option value="3">Gear 3</option>
-    </select>
+  <ol>
+    <li>You have three gears to choose from.</li>
+    <li>
+      The first gear (Gear 1) will make the car move 10 pixels per button
+      press. And the car will consume 1 liter of fuel per movement.
+    </li>
+    <li>
+      The second gear (Gear 2) will make the car move 20 pixels per button
+      press. And the car will consume 0.75 liter of fuel per movement.
+    </li>
+    <li>
+      The third gear (Gear 3) will make the car move 30 pixels per button
+      press. And the car will consume 0.25 liter of fuel per movement.
+    </li>
+    <li>
+      After you choose a gear use the "D" keyboard button to move the car
+      towards the finish point.
+    </li>
+    <li>Reach the finish line without running out of fuel!</li>
+    <li>Refresh the browser to start a new fresh game.</li>
+  </ol>
 
-    <h3 id="fuelTank">Fuel Tank: 50 Liters</h3>
+  <h2>Some Restrictions:</h2>
+  <ol>
+    <li>You MUST start with the first gear and use it for 5 movements!</li>
+    <li>
+      You can only win if you have used the second gear for 5 movements!
+    </li>
+  </ol>
+  <ul>
+    <li>
+      You can bypass these restrictions if you know the first cheat code!
+    </li>
+    <li>
+      <input type="text" id="cheatcode" placeholder="Enter Cheat Code" />
+      <button id="cheatButton">Enter</button>
+    </li>
+  </ul>
 
-    <br />
-    <br />
-    <br />
+  <h3>Select a gear:</h3>
+  <select name="gears" id="gearSelect">
+    <option value="1" selected>Gear 1</option>
+    <option value="2">Gear 2</option>
+    <option value="3">Gear 3</option>
+  </select>
 
-    <img id="finishLine" src="./Finish.png" alt="Car" width="200px" />
-    <img id="car" src="./Car.png" alt="Car" width="250px" />
+  <h3 id="fuelTank">Fuel Tank: 50 Liters</h3>
 
-    <script src="./script.js"></script>
-  </body>
+  <br />
+  <br />
+  <br />
+
+  <img id="finishLine" src="./Finish.png" alt="Car" width="200px" />
+  <img id="car" src="./Car.png" alt="Car" width="250px" />
+
+  <script src="./script.js"></script>
+</body>
+
 </html>
